@@ -1,0 +1,1 @@
+alter table customer_tb add column income decimal not null
