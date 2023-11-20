@@ -1,8 +1,10 @@
+server:
+  port: ${PORT}
 spring:
   datasource:
-    url: jdbc:h2:mem:credit_request_system_db
-    username: joaovq
-    password: 1234
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
   jpa:
     show-sql: true
     hibernate:
@@ -15,3 +17,6 @@ spring:
       settings:
         trace: false
         web-allow-others: false
+logging:
+  level:
+    root: INFO
