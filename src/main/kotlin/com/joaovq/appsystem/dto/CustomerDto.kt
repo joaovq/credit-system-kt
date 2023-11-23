@@ -2,7 +2,6 @@ package com.joaovq.appsystem.dto
 
 import com.joaovq.appsystem.entity.Address
 import com.joaovq.appsystem.entity.Customer
-import jakarta.validation.Valid
 import jakarta.validation.constraints.Email
 import jakarta.validation.constraints.NotEmpty
 import org.hibernate.validator.constraints.br.CPF
@@ -20,7 +19,6 @@ data class CustomerDto(
     @field:NotEmpty(message = "Invalid input")
     @field:Email(message = "Invalid email")
     var email: String,
-    @field:NotEmpty(message = "Invalid input")
     @field:NotNull("Invalid input")
     var income: BigDecimal,
     @field:NotEmpty(message = "Invalid input")

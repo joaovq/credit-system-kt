@@ -7,8 +7,6 @@ import org.springframework.validation.FieldError
 import org.springframework.web.bind.MethodArgumentNotValidException
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.RestControllerAdvice
-import java.lang.Exception
-import java.lang.IllegalArgumentException
 import java.time.LocalDateTime
 
 @RestControllerAdvice
@@ -23,10 +21,10 @@ class RestExceptionHandler {
         }
         return ResponseEntity.status(ex.statusCode).body(
             ExceptionDetails(
-                ex.titleMessageCode,
+                "Bad request! Consult documentation",
                 LocalDateTime.now(),
                 ex.statusCode.value(),
-                ex.objectName,
+                ex::class.toString(),
                 errors
             )
         )
@@ -39,7 +37,7 @@ class RestExceptionHandler {
                 "Conflict! Consult documentation",
                 LocalDateTime.now(),
                 HttpStatus.CONFLICT.value(),
-                ex::class.simpleName.toString(),
+                ex::class.toString(),
                 mutableMapOf(ex.cause.toString() to ex.message)
             )
         )
@@ -49,7 +47,7 @@ class RestExceptionHandler {
         "Bad request! Consult documentation",
         LocalDateTime.now(),
         HttpStatus.BAD_REQUEST.value(),
-        ex::class.simpleName.toString(),
+        ex::class.toString(),
         mutableMapOf(ex.cause.toString() to ex.message)
     )
 

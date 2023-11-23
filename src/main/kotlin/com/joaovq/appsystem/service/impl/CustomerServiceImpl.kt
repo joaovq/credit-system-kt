@@ -21,7 +21,7 @@ class CustomerServiceImpl(
         customerRepository.findByIdOrNull(id) ?: throw BusinessException("Customer not exist")
 
     override fun delete(id: Long): Customer? {
-        val customerById = getCustomerById(id)?.apply {
+        val customerById = getCustomerById(id).apply {
             customerRepository.delete(this)
         } ?: throw BusinessException("Customer not exist")
         return customerById
